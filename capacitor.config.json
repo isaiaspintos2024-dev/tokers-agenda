@@ -1,0 +1,14 @@
+{
+  "appId": "com.tokers.agenda",
+  "appName": "Toker's Agenda",
+  "webDir": "www",
+  "backgroundColor": "#121612",
+  "android": {
+    "backgroundColor": "#121612"
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "iconColor": "#4caf50"
+    }
+  }
+}
