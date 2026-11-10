@@ -174,12 +174,45 @@ html.cb .d-done::after{content:"✓";color:#fff}html.cb .d-fail::after,html.cb .
 /* ===== Listas ===== */
 .item{display:flex;align-items:center;gap:.75rem;background:var(--card);border:2px solid var(--line);border-radius:.9rem;padding:.35rem .4rem .35rem .75rem;margin-bottom:.4rem;min-height:3.4rem;cursor:pointer}
 .item:active{background:var(--card2)}
-.item .itx{flex:1;overflow-wrap:anywhere}
+.item .itx{flex:1;min-width:0;overflow-wrap:anywhere}
+.itx.gx{display:flex;flex-wrap:wrap;align-items:center;column-gap:.6rem}.gx .gt{flex:1 1 auto;min-width:0}.gx .amt{margin-left:auto}
+.item.ok .itx .gt{text-decoration:line-through}
+.item.ok .itx.gx{text-decoration:none}
 .item.ok .itx{text-decoration:line-through;color:var(--muted)}
 .ckb{width:1.9rem;height:1.9rem;border-radius:.5rem;border:3px solid var(--gray);flex-shrink:0;font-weight:900;display:flex;align-items:center;justify-content:center;color:transparent}
 .item.ok .ckb{background:var(--done);border-color:var(--done);color:#fff}
 .x{background:none;border:none;color:var(--muted);font-size:1.1rem;min-width:2.9rem;min-height:2.9rem;border-radius:.6rem;flex-shrink:0}
 .listtools{display:flex;gap:.4rem;flex-wrap:wrap;margin:-.4rem 0 .8rem}
+.muted{color:var(--muted)}
+.morelist{display:grid;gap:.5rem}.morelist .btn{text-align:left}
+.quick.wrap{flex-wrap:wrap}.quick.wrap #li{flex:1 1 9rem}
+.quick .amtin{flex:0 1 7rem;width:7rem;min-width:5.5rem}
+.amt{font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+.item.ok .amt{color:var(--muted);text-decoration:line-through}
+.totals{background:var(--card);border:2px solid var(--green);border-radius:1rem;padding:.7rem 1rem;margin-top:.8rem}
+.totals .tr{display:flex;flex-wrap:wrap;justify-content:space-between;column-gap:.75rem;padding:.25rem 0;font-variant-numeric:tabular-nums}
+.totals .tr b{margin-left:auto;overflow-wrap:anywhere}
+.totals .tr.big{font-size:1.35rem;font-weight:900;color:var(--green2);border-top:1px solid var(--line);margin-top:.3rem;padding-top:.5rem}
+.due{font-weight:700;white-space:nowrap}
+.due.late{color:var(--red-t)}.due.today{color:var(--yellow-t)}
+.typepick{display:grid;gap:.45rem;margin:.3rem 0}
+.typepick button{display:flex;gap:.75rem;align-items:center;text-align:left;border:2px solid var(--line);background:var(--card);border-radius:.9rem;padding:.6rem .75rem;min-height:3.6rem}
+.typepick button.on{border-color:var(--green2);background:var(--card2);box-shadow:0 0 0 2px var(--green2)}
+.typepick b{display:block}.typepick small{color:var(--muted);font-size:.85rem}
+.typepick .ico{font-size:1.6rem}
+.stu{background:var(--card);border:2px solid var(--line);border-radius:.9rem;padding:.25rem .5rem .55rem;margin-bottom:.45rem}
+.stu-top{display:flex;align-items:center;gap:.4rem}
+.stu-top .itx{flex:1;font-weight:700;overflow-wrap:anywhere;padding:.3rem .2rem;min-height:2.75rem;display:flex;align-items:center;cursor:pointer;border-radius:.5rem}
+.stu-top .itx:active{background:var(--card2)}
+.grades,.ghead{display:flex;flex-wrap:wrap;gap:.25rem}
+.grades>input,.ghead>span{flex:1 1 0;min-width:1.95rem}
+.grades>.avg,.ghead>span:last-child{flex:1.45 1 0;min-width:2.9rem}
+.ghead{text-align:center;color:var(--muted);font-size:.75rem;font-weight:800;margin:0 calc(.5rem + 2px) .25rem}
+.grades input{padding:.15rem 0;text-align:center;min-height:2.85rem;font-size:.95rem;font-weight:800;font-variant-numeric:tabular-nums;border-radius:.6rem}
+.grades input::placeholder{font-size:.7rem;font-weight:700;color:var(--muted);opacity:.7}
+.grades input[aria-invalid=true]{border-color:var(--red);background:color-mix(in srgb,var(--red) 22%,var(--card2))}
+.avg{display:flex;align-items:center;justify-content:center;border-radius:.6rem;background:var(--card2);border:2px solid var(--line);font-weight:900;min-height:2.85rem;font-variant-numeric:tabular-nums}
+.avg.ok{border-color:var(--done);color:var(--done-t)}.avg.bad{border-color:var(--red);color:var(--red-t)}
 
 /* ===== Resumen y ajustes ===== */
 .pct{font-size:2.6rem;font-weight:900;color:var(--green2);margin:0}
@@ -240,7 +273,7 @@ html.cb .d-done::after{content:"✓";color:#fff}html.cb .d-fail::after,html.cb .
 
 /* ===== Menú inferior ===== */
 .nav{position:fixed;left:0;right:0;bottom:0;background:var(--nav);border-top:2px solid var(--line);display:flex;gap:0;padding:0 .25rem calc(.3rem + env(safe-area-inset-bottom));z-index:40}
-.nav button{flex:1;min-width:0;background:none;border:none;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;color:var(--muted);padding:.3rem .1rem;border-radius:.75rem;min-height:3.7rem}
+.nav button{flex:1;min-width:0;overflow:hidden;white-space:nowrap;background:none;border:none;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:min(.8rem,3.3vw);font-weight:700;color:var(--muted);padding:.3rem .1rem;border-radius:.75rem;min-height:3.7rem}
 .nav button span{font-size:1.35rem;filter:grayscale(1);opacity:.75}
 .nav button.on{color:var(--green2);background:var(--card)}
 .nav button.on span{filter:none;opacity:1}
@@ -363,9 +396,18 @@ function normalize(r){
       id:safeId(n.id),title:str(n.title),text:str(n.text),date:okDate(n.date)?n.date:'',
       sketch:imgId(n.sketch),photo:imgId(n.photo),pinned:!!n.pinned,
       color:NCOLORS.includes(n.color)?n.color:'none',updated:+n.updated||0})),
-    lists:arr(o.lists).filter(l=>l&&typeof l==='object').map(l=>({
-      id:safeId(l.id),name:str(l.name)||'Lista',
-      items:arr(l.items).filter(i=>i&&typeof i==='object').map(i=>({id:safeId(i.id),text:str(i.text),done:!!i.done}))}))
+    lists:arr(o.lists).filter(l=>l&&typeof l==='object').map(l=>{
+      const type=['tareas','gastos','alumnos'].includes(l.type)?l.type:'tareas';
+      const cols=Math.min(8,Math.max(3,parseInt(l.cols,10)||3));
+      const pass=typeof l.pass==='number'&&l.pass>=1&&l.pass<=10?l.pass:6;
+      return{id:safeId(l.id),name:str(l.name)||'Lista',type,cols,pass,
+        items:arr(l.items).filter(i=>i&&typeof i==='object').map(i=>{
+          const stv=ORDER.includes(i.st)?i.st:(i.done?'done':'pend');
+          const g=arr(i.grades).slice(0,cols).map(x=>typeof x==='number'&&x>=1&&x<=10?x:null);while(g.length<cols)g.push(null);
+          return{id:safeId(i.id),text:str(i.text),done:type==='tareas'?stv==='done':!!i.done,st:stv,due:okDate(i.due)?i.due:'',
+            amount:typeof i.amount==='number'&&isFinite(i.amount)&&i.amount>=0?i.amount:null,grades:g};
+        })};
+    })
   };
 }
 function load(){
@@ -477,7 +519,7 @@ const legend=()=>`<div class="legend" aria-hidden="true">${['pend','prog','done'
 /* --- HOY --- */
 function overdue(){const s=today();return S.tasks.filter(t=>t.repeat==='none'&&t.date<s&&['pend','prog'].includes(t.status[t.date]||'pend')).sort((a,b)=>a.date.localeCompare(b.date))}
 function vHoy(){
-  const s=today(),ts=tasksOn(s),done=ts.filter(t=>t.status[s]==='done').length,late=overdue();
+  const s=today(),ts=tasksOn(s),done=ts.filter(t=>t.status[s]==='done').length,late=overdue(),lp=listPending();
   return `<header class="top"><div><div class="hi">${saludo()}</div><h1>${fmtLong(s)}</h1></div><div class="tools">
     <button class="ibtn" data-act="search" aria-label="Buscar">🔍</button>
     ${'speechSynthesis'in window?'<button class="ibtn" data-act="speak" aria-label="Leer mi día en voz alta">🔊</button>':''}
@@ -486,6 +528,7 @@ function vHoy(){
   ${quickAdd(s)}
   <h2 class="sec">Hoy</h2>
   ${ts.length?ts.map(t=>taskRow(t,s)).join(''):emptyBox('Nada para hoy. ¡A tomar unos mates! 🧉')}
+  ${lp.length?`<h2 class="sec">De tus listas</h2>`+lp.map(x=>liRow(x.l,x.it,true)).join(''):''}
   ${late.length?`<h2 class="sec red">Quedaron de días anteriores <button class="btn ghost small" data-act="allToday">📥 Pasar todo a hoy</button></h2>`+late.map(t=>taskRow(t,t.date,true)).join(''):''}
   ${legend()}`;
 }
@@ -499,8 +542,9 @@ function vCal(){
     if(i===35&&d.getMonth()!==m)break;
     const ts=tasksOn(s),hasNote=S.notes.some(n=>n.date===s),nd=ts.filter(t=>t.status[s]==='done').length;
     const all=ts.length&&nd===ts.length;
-    const dots=ts.slice(0,6).map(t=>`<i class="d-${st(t,s)}"></i>`).join('')+(hasNote?'<i class="d-note"></i>':'');
-    const lab=`${fmtLong(s)}${ts.length?`, ${nd} de ${ts.length} hechas`:', sin tareas'}${hasNote?', con nota':''}`;
+    const ld=listDueOn(s);
+    const dots=[...ts.map(t=>st(t,s)),...ld.map(x=>liSt(x.it))].slice(0,6).map(k=>`<i class="d-${k}"></i>`).join('')+(hasNote?'<i class="d-note"></i>':'');
+    const lab=`${fmtLong(s)}${ts.length?`, ${nd} de ${ts.length} hechas`:', sin tareas'}${ld.length?`, ${ld.length} de tus listas`:''}${hasNote?', con nota':''}`;
     cells+=`<button class="day ${d.getMonth()!==m?'other':''} ${s===t0?'today':''} ${s===ui.sel?'sel':''} ${all?'allok':''}" data-act="calDay" data-d="${s}" aria-label="${lab}" ${s===ui.sel?'aria-pressed="true"':''}>${d.getDate()}<span class="dots" aria-hidden="true">${dots}</span></button>`;
   }
   const s=ui.sel,ts=tasksOn(s),notes=S.notes.filter(n=>n.date===s);
@@ -510,6 +554,7 @@ function vCal(){
   <div class="row" style="justify-content:center"><button class="btn ghost small" data-act="calToday">Ir a hoy</button></div>
   <section class="daypanel"><h2>${fmtLong(s)}</h2>${quickAdd(s)}
   ${ts.length?ts.map(t=>taskRow(t,s)).join(''):emptyBox('Sin tareas este día')}
+  ${(()=>{const ld=listDueOn(s);return ld.length?'<h2 class="sec">Vencen en tus listas</h2>'+ld.map(x=>liRow(x.l,x.it,true)).join(''):''})()}
   <h2 class="sec">Notas del día</h2>
   ${notes.length?`<div class="grid">${notes.map(noteCard).join('')}</div>`:''}
   <button class="btn ghost" style="margin-top:.5rem" data-act="newNote" data-d="${s}">＋ Nota para este día</button></section>`;
@@ -530,7 +575,7 @@ function closeModal(fromPop){
   $('#modal').classList.add('hidden');$('#sheet').innerHTML='';DIRTY=false;updateInert();
   if(!fromPop)popLayer('modal');
   if(PENDING.size){PENDING.clear();gcImgs()}
-  ED=null;NE=null;
+  ED=null;NE=null;IE=null;OPT=null;NL=null;
   if(lastFocus&&document.contains(lastFocus))try{lastFocus.focus({preventScroll:true})}catch(e){}
   lastFocus=null;
 }
@@ -704,23 +749,169 @@ function skSave(){
   const d=o.toDataURL('image/png');const cb=SK.cb;skClose();cb&&cb(d);
 }
 
-/* --- LISTAS --- */
+/* --- LISTAS (tres tipos: tareas, gastos, alumnos) --- */
+const LTYPES={tareas:['✅','Tareas','Con los 3 colores y fecha límite si querés'],gastos:['💰','Compras / gastos','Suma sola el total y resta lo que vas marcando'],alumnos:['🎓','Alumnos','Notas del 1 al 10 y promedio automático']};
+const ST_EMO={pend:'⚪',prog:'🟡',done:'🟢',fail:'🔴',late:'⚪'};
+const fmtNum=n=>Number(n).toLocaleString('es-AR',{maximumFractionDigits:2});
+const fmtMoney=n=>'$'+Number(n).toLocaleString('es-AR',{minimumFractionDigits:n%1?2:0,maximumFractionDigits:2});
+function parseMoney(s){
+  s=String(s??'').replace(/[$\s]/g,'').replace(/[.,]+$/,'');if(!s)return null;
+  if(s.includes(','))s=s.replace(/\./g,'').replace(',','.');
+  else if(/^\d{1,3}(\.\d{3})+$/.test(s))s=s.replace(/\./g,'');
+  if(!/^\d+(\.\d+)?$/.test(s))return null;
+  const n=Number(s);return isFinite(n)?Math.round(n*100)/100:null;
+}
+function splitAmount(line){
+  line=String(line);const ms=[...line.matchAll(/\$?\s?\d[\d.,]*/g)];if(!ms.length)return{text:line.trim(),amount:null};
+  const withPeso=ms.filter(m=>m[0].includes('$')),m=(withPeso.length?withPeso:ms).pop();
+  const amount=parseMoney(m[0]);if(amount==null)return{text:line.trim(),amount:null};
+  const text=(line.slice(0,m.index)+' '+line.slice(m.index+m[0].length)).replace(/\s+/g,' ').replace(/[\s:–—\-$.]+$/,'').replace(/^[\s$\-•*]+/,'').trim();
+  return{text,amount};
+}
+function parseGrade(s){const t=String(s??'').trim().replace(',','.');if(!/^\d+(\.\d+)?$/.test(t))return null;const n=Number(t);return n>=1&&n<=10?Math.round(n*100)/100:null}
+function mkItem(l,text,extra){return Object.assign({id:uid(),text:text||'',done:false,st:'pend',due:'',amount:null,grades:Array(l.cols).fill(null)},extra||{})}
+const liSt=it=>(it.st==='pend'&&it.due&&it.due<today())?'late':it.st;
+function gastosTot(l){let tot=0,mk=0;l.items.forEach(i=>{const a=i.amount||0;tot+=a;if(i.done)mk+=a});tot=Math.round(tot*100)/100;mk=Math.round(mk*100)/100;return{tot,mk,falta:Math.round((tot-mk)*100)/100}}
+function stuAvg(it){const g=it.grades.filter(x=>x!=null);return g.length?Math.round(g.reduce((a,b)=>a+b,0)/g.length*100)/100:null}
+function cursoStats(l){const av=l.items.map(stuAvg).filter(x=>x!=null);return{n:l.items.length,con:av.length,prom:av.length?Math.round(av.reduce((a,b)=>a+b,0)/av.length*100)/100:null,apr:av.filter(x=>x>=l.pass).length}}
+function cursoHTML(l){const c=cursoStats(l);if(!c.n)return'';return `<div class="tr"><span>Promedio del curso</span><b>${c.prom==null?'—':fmtNum(c.prom)}</b></div><div class="tr"><span>✓ Aprueban (${fmtNum(l.pass)} o más)</span><b>${c.apr} de ${c.con}</b></div><div class="tr"><span>Sin notas todavía</span><b>${c.n-c.con}</b></div>`}
+function listSummary(l){
+  const n=l.items.length;
+  if(l.type==='gastos'){const g=gastosTot(l);return[n?`Falta ${fmtMoney(g.falta)} de ${fmtMoney(g.tot)}`:'Sin gastos',g.tot?g.mk/g.tot:0]}
+  if(l.type==='alumnos'){const c=cursoStats(l);return[`${n} alumno${n===1?'':'s'}${c.prom!=null?' · Prom. '+fmtNum(c.prom):''}`,null]}
+  const d=l.items.filter(i=>i.st==='done').length;return[`${d}/${n} hechas`,n?d/n:0];
+}
+function dueChip(it){
+  if(!it.due)return'';const t=today(),k=liSt(it),open=!['done','fail'].includes(it.st);
+  const lab=it.due===t?'hoy':it.due===addDays(t,1)?'mañana':fmtShort(it.due);
+  return `<span class="due ${k==='late'?'late':(open&&it.due===t)?'today':''}">📅 ${k==='late'?'Venció':'Vence'} ${lab}</span>`;
+}
+function liRow(l,it,showList){
+  const k=liSt(it),id=A(it.id),lid=A(l.id);
+  const meta=[showList?'📋 '+esc(l.name):'',dueChip(it)].filter(Boolean).join(' · ');
+  return `<div class="task" role="button" tabindex="0" data-act="editItem" data-id="${id}" data-d="${lid}" aria-label="Abrir ${A(it.text)}"><button class="dot s-${k}" data-act="cycleLI" data-id="${id}" data-d="${lid}" aria-label="${A(it.text)}: ${LBL[k]}. Tocar para cambiar"></button><div class="tb"><div class="tt ${k==='done'?'strike':''}">${esc(it.text)}</div>${meta?`<div class="tm">${meta}</div>`:''}</div><span class="lbl l-${k}" aria-hidden="true">${LBL[k]}</span></div>`;
+}
+const listTasks=()=>S.lists.filter(l=>l.type==='tareas').flatMap(l=>l.items.map(it=>({l,it})));
+const listDueOn=s=>listTasks().filter(x=>x.it.due===s);
+const listPending=()=>{const t=today();return listTasks().filter(x=>x.it.due&&x.it.due<=t&&['pend','prog'].includes(x.it.st)).sort((a,b)=>a.it.due.localeCompare(b.it.due))};
+
 function vListas(){
   if(ui.openList&&S.lists.find(l=>l.id===ui.openList))return vLista(ui.openList);
   ui.openList=null;
   return `<header class="top"><h1>Listas</h1><button class="btn" data-act="newList">＋ Lista</button></header>
-  ${S.lists.length?`<div class="grid">${S.lists.map(l=>{const d=l.items.filter(i=>i.done).length;return `<div class="card" role="button" tabindex="0" data-act="openList" data-id="${A(l.id)}" aria-label="Lista ${A(l.name)}, ${d} de ${l.items.length} listos"><div class="tt">${esc(l.name)}</div><div class="tm">${d}/${l.items.length} listos</div><div class="bar small"><i style="width:${l.items.length?d/l.items.length*100:0}%"></i></div></div>`}).join('')}</div>`:emptyBox('Armá tu primera lista: materiales, compras, lo que sea 🛒')}`;
+  ${S.lists.length?`<div class="grid">${S.lists.map(l=>{const[txt,p]=listSummary(l),T=LTYPES[l.type];return `<div class="card" role="button" tabindex="0" data-act="openList" data-id="${A(l.id)}" aria-label="${A(T[1])}: ${A(l.name)}, ${A(txt)}"><div class="tm" aria-hidden="true">${T[0]} ${T[1]}</div><div class="tt">${esc(l.name)}</div><div class="tm">${esc(txt)}</div>${p!=null?`<div class="bar small"><i style="width:${p*100}%"></i></div>`:''}</div>`}).join('')}</div>`:emptyBox('Armá tu primera lista: tareas, gastos o las notas de un curso 📋')}`;
 }
 function vLista(id){
-  const l=S.lists.find(x=>x.id===id),d=l.items.filter(i=>i.done).length;
-  return `<header class="top"><button class="ibtn" data-act="listBack" aria-label="Volver a las listas">‹</button><h1 style="flex:1">${esc(l.name)}</h1></header>
-  <div class="listtools"><button class="btn ghost small" data-act="renameList">✎ Renombrar</button><button class="btn ghost small" data-act="dupList">⧉ Duplicar</button><button class="btn ghost small" data-act="shareList">📤 Compartir</button><button class="btn ghost small" data-act="delList">🗑 Borrar</button></div>
-  <form class="quick" data-form="item"><label class="sr" for="li">Agregar ítem</label><input id="li" placeholder="Agregar ítem…" autocomplete="off" enterkeyhint="done">${micBtn('li')}<button type="submit" aria-label="Agregar ítem">＋</button></form>
-  ${l.items.length?`<div class="prog"><div class="bar"><i style="width:${d/l.items.length*100}%"></i></div><span>${d}/${l.items.length}</span></div>`+l.items.map(it=>`<div class="item ${it.done?'ok':''}" role="checkbox" aria-checked="${it.done}" tabindex="0" data-act="togItem" data-id="${A(it.id)}"><span class="ckb" aria-hidden="true">✓</span><span class="itx">${esc(it.text)}</span><button class="x" data-act="delItem" data-id="${A(it.id)}" aria-label="Borrar ${A(it.text)}">✕</button></div>`).join(''):emptyBox('Lista vacía')}
-  ${d?'<button class="btn ghost" style="margin-top:.6rem" data-act="clearDone">Borrar los tachados</button>':''}`;
+  const l=S.lists.find(x=>x.id===id),T=LTYPES[l.type],n=l.items.length;
+  const head=`<header class="top"><button class="ibtn" data-act="listBack" aria-label="Volver a las listas">‹</button><div style="flex:1;min-width:0"><div class="hi">${T[0]} ${T[1]}</div><h1>${esc(l.name)}</h1></div></header>`;
+  const tools=`<div class="listtools"><button class="btn ghost small" data-act="bulkAdd">📋 Agregar varios</button>${l.type==='alumnos'?'<button class="btn ghost small" data-act="listOpts">⚙ Casilleros</button><button class="btn ghost small" data-act="sortList">A→Z Ordenar</button>':''}<button class="btn ghost small" data-act="listMore" aria-label="Más opciones de la lista">⋯ Más</button></div>`;
+  let form,body,foot='';
+  if(l.type==='gastos'){
+    const g=gastosTot(l),mk=l.items.filter(i=>i.done).length;
+    form=`<form class="quick wrap" data-form="item"><label class="sr" for="li">Detalle del gasto</label><input id="li" placeholder="Detalle (ej: Pan)" autocomplete="off" enterkeyhint="next">${micBtn('li')}<label class="sr" for="la">Monto</label><input id="la" class="amtin" inputmode="decimal" placeholder="$ Monto" autocomplete="off" enterkeyhint="done"><button type="submit" aria-label="Agregar gasto">＋</button></form>`;
+    body=n?l.items.map(it=>`<div class="item ${it.done?'ok':''}" role="checkbox" aria-checked="${it.done}" tabindex="0" data-act="togItem" data-id="${A(it.id)}" aria-label="${A(it.text||'Gasto')}${it.amount!=null?' '+A(fmtMoney(it.amount)):''}"><span class="ckb" aria-hidden="true">✓</span><span class="itx gx"><span class="gt">${it.text?esc(it.text):'<span class="muted">Sin detalle</span>'}</span><span class="amt">${it.amount==null?'<small class="muted">sin monto</small>':fmtMoney(it.amount)}</span></span><button class="x" data-act="editItem" data-id="${A(it.id)}" data-d="${A(l.id)}" aria-label="Editar ${A(it.text||'gasto')}">✎</button></div>`).join(''):emptyBox('Anotá tus gastos: el detalle y el monto, o solo el monto');
+    foot=n?`<div class="totals"><div class="tr"><span>Total</span><b>${fmtMoney(g.tot)}</b></div><div class="tr"><span>✓ Marcado</span><b>− ${fmtMoney(g.mk)}</b></div><div class="tr big"><span>Falta</span><b>${fmtMoney(g.falta)}</b></div></div><p class="hint">Tocá un gasto para marcarlo como pagado / comprado</p>${mk?'<button class="btn ghost" style="margin-top:.6rem" data-act="clearDone">Borrar los marcados</button>':''}`:'';
+  }else if(l.type==='alumnos'){
+    form=`<form class="quick" data-form="item"><label class="sr" for="li">Nombre del alumno</label><input id="li" placeholder="Nombre del alumno…" autocomplete="off" enterkeyhint="done">${micBtn('li')}<button type="submit" aria-label="Agregar alumno">＋</button></form>`;
+    const gh=`<div class="ghead" style="--n:${l.cols}" aria-hidden="true">${Array.from({length:l.cols},(_,j)=>`<span>N${j+1}</span>`).join('')}<span>Prom.</span></div>`;
+    body=n?gh+l.items.map((it,ix)=>{const a=stuAvg(it);return `<div class="stu"><div class="stu-top"><span class="muted">${ix+1}.</span><span class="itx" role="button" tabindex="0" data-act="editItem" data-id="${A(it.id)}" data-d="${A(l.id)}" aria-label="Editar ${A(it.text)}">${esc(it.text)}</span></div><div class="grades" style="--n:${l.cols}">${it.grades.map((g,j)=>`<input data-inp="grade" data-id="${A(it.id)}" data-d="${j}" inputmode="decimal" enterkeyhint="next" autocomplete="off" maxlength="5" placeholder="N${j+1}" value="${g==null?'':A(fmtNum(g))}" aria-label="Nota ${j+1} de ${A(it.text)}">`).join('')}<output class="avg ${a==null?'':a>=l.pass?'ok':'bad'}" data-avg="${A(it.id)}" aria-label="Promedio de ${A(it.text)}">${a==null?'—':fmtNum(a)}</output></div></div>`}).join(''):emptyBox('Agregá los alumnos del curso. Con “Agregar varios” podés pegar toda la lista de una vez.');
+    foot=n?`<div class="totals" id="cursum">${cursoHTML(l)}</div><p class="hint">El promedio divide la suma por la cantidad de casilleros con nota</p>`:'';
+  }else{
+    const d=l.items.filter(i=>i.st==='done').length;
+    form=`<form class="quick" data-form="item"><label class="sr" for="li">Nueva tarea de la lista</label><input id="li" placeholder="Nueva tarea…" autocomplete="off" enterkeyhint="done">${micBtn('li')}<button type="submit" aria-label="Agregar tarea">＋</button></form>`;
+    body=n?`<div class="prog"><div class="bar"><i style="width:${d/n*100}%"></i></div><span>${d}/${n} hechas</span></div>`+l.items.map(it=>liRow(l,it,false)).join(''):emptyBox('Lista vacía. Tocá una tarea para ponerle fecha límite.');
+    foot=n?legend()+(d?'<button class="btn ghost" style="margin-top:.6rem" data-act="clearDone">Borrar las hechas</button>':''):'';
+  }
+  return head+tools+form+body+foot;
 }
 const curList=()=>S.lists.find(x=>x.id===ui.openList);
 function openList(id){ui.openList=id;pushLayer('list');render();window.scrollTo(0,0)}
+
+/* Notas de alumnos: se guardan mientras escribís, sin redibujar (así no se cierra el teclado) */
+function gradeInput(el,final){
+  const l=curList();if(!l)return;const it=l.items.find(i=>i.id===el.dataset.id);if(!it)return;
+  const j=+el.dataset.d,raw=el.value.trim();
+  if(!raw){it.grades[j]=null;el.removeAttribute('aria-invalid')}
+  else{const n=parseGrade(raw);
+    if(n==null){if(!final){el.setAttribute('aria-invalid','true');return}
+      toast('La nota va de 1 a 10');el.value=el.dataset.orig||'';el.removeAttribute('aria-invalid');gradeInput(el,true);return}
+    it.grades[j]=n;el.removeAttribute('aria-invalid');if(final)el.value=fmtNum(n)}
+  save();
+  const a=stuAvg(it),o=document.querySelector(`[data-avg="${CSS.escape(it.id)}"]`);
+  if(o){o.textContent=a==null?'—':fmtNum(a);o.className='avg '+(a==null?'':a>=l.pass?'ok':'bad')}
+  const c=$('#cursum');if(c)c.innerHTML=cursoHTML(l);
+}
+
+/* Editor de un ítem de lista */
+let IE=null;
+function editItem(itemId,listId){const l=S.lists.find(x=>x.id===listId),it=l&&l.items.find(i=>i.id===itemId);if(!it)return;IE={lid:l.id,...JSON.parse(JSON.stringify(it))};itemModal()}
+function itemModal(){
+  const l=S.lists.find(x=>x.id===IE.lid),t=l.type;
+  openModal(`<h2 id="mTitle">${t==='alumnos'?'Alumno':t==='gastos'?'Gasto':'Tarea de la lista'}</h2>
+  <label for="i_t">${t==='alumnos'?'Nombre':t==='gastos'?'Detalle':'Texto'}</label><div class="inrow"><input id="i_t" value="${A(IE.text)}" autocomplete="off">${micBtn('i_t')}</div>
+  ${t==='gastos'?`<label for="i_a">Monto</label><input id="i_a" inputmode="decimal" placeholder="Ej: 20.000" value="${IE.amount==null?'':A(fmtNum(IE.amount))}" autocomplete="off"><label class="chk"><input type="checkbox" id="i_done" ${IE.done?'checked':''}> ✓ Marcado (ya pagado / comprado)</label>`:''}
+  ${t==='tareas'?`<div class="lab">Estado</div><div class="stpick" role="group" aria-label="Estado">${ORDER.map(k=>`<button data-act="ieSt" data-d="${k}" class="${IE.st===k?'on':''}" aria-pressed="${IE.st===k}"><span class="dot mini s-${k}" aria-hidden="true"></span>${LBL[k]}</button>`).join('')}</div>
+    <label for="i_due">Fecha límite (opcional)</label><div class="inrow"><input type="date" id="i_due" value="${A(IE.due)}"><button type="button" class="mic" data-act="ieNoDue" aria-label="Quitar fecha límite">✕</button></div>`:''}
+  ${t==='alumnos'?`<p class="hint" style="text-align:left">Las notas se cargan directo en los casilleros de la lista.</p>`:''}
+  <div class="row end"><button class="btn danger" data-act="delItem" style="margin-right:auto">🗑 Borrar</button><button class="btn ghost" data-act="close">Cancelar</button><button class="btn" data-act="saveItem">Guardar</button></div>`);
+}
+function saveItem(){
+  const l=S.lists.find(x=>x.id===IE.lid),it=l&&l.items.find(i=>i.id===IE.id);if(!it){closeModal();return}
+  const text=$('#i_t').value.trim();
+  if(l.type==='gastos'){
+    const raw=$('#i_a').value.trim(),amt=raw?parseMoney(raw):null;
+    if(raw&&amt==null){toast('Ese monto no se entiende. Ej: 20.000');$('#i_a').focus();return}
+    if(!text&&amt==null){toast('Poné un detalle o un monto');return}
+    Object.assign(it,{text,amount:amt,done:$('#i_done').checked});
+  }else{
+    if(!text){toast(l.type==='alumnos'?'Poné el nombre':'Escribí la tarea');$('#i_t').focus();return}
+    it.text=text;
+    if(l.type==='tareas'){it.st=IE.st;it.done=IE.st==='done';it.due=$('#i_due').value||''}
+  }
+  save();closeModal();render();toast('Guardado ✓');
+}
+
+/* Opciones de una lista de alumnos */
+let OPT=null;
+function optsModal(){
+  const l=curList();OPT={cols:l.cols};
+  openModal(`<h2 id="mTitle">Casilleros de notas</h2><div class="lab">¿Cuántas notas por alumno?</div><div class="chips" role="group" aria-label="Cantidad de casilleros">${[3,4,5,6,7,8].map(n=>`<button class="chip2 ${n===l.cols?'on':''}" data-act="optCols" data-d="${n}" aria-pressed="${n===l.cols}">${n}</button>`).join('')}</div>
+  <label for="o_pass">Nota para aprobar</label><input id="o_pass" inputmode="decimal" value="${A(fmtNum(l.pass))}" autocomplete="off">
+  <p class="hint" style="text-align:left">Si achicás la cantidad, se borran las notas de los casilleros que sobran (podés deshacerlo).</p>
+  <div class="row end"><button class="btn ghost" data-act="close">Cancelar</button><button class="btn" data-act="saveOpts">Guardar</button></div>`);
+}
+
+/* Lista nueva */
+let NL=null;
+function newListModal(){
+  NL={type:'tareas',cols:3};
+  openModal(`<h2 id="mTitle">Nueva lista</h2><label for="nl_n">Nombre</label><input id="nl_n" placeholder="Ej: Gastos semanales" autocomplete="off" enterkeyhint="done">
+  <div class="lab">¿Qué tipo de lista?</div><div class="typepick" role="radiogroup" aria-label="Tipo de lista">${Object.entries(LTYPES).map(([k,[ic,nm,ds]])=>`<button role="radio" aria-checked="${NL.type===k}" class="${NL.type===k?'on':''}" data-act="nlType" data-d="${k}"><span class="ico" aria-hidden="true">${ic}</span><span><b>${nm}</b><small>${ds}</small></span></button>`).join('')}</div>
+  <div id="nlCols" class="hidden"><div class="lab">Casilleros de notas por alumno</div><div class="chips" role="group" aria-label="Cantidad de casilleros">${[3,4,5,6,7,8].map(n=>`<button class="chip2 ${n===NL.cols?'on':''}" data-act="nlCols" data-d="${n}" aria-pressed="${n===NL.cols}">${n}</button>`).join('')}</div></div>
+  <div class="row end"><button class="btn ghost" data-act="close">Cancelar</button><button class="btn" data-act="nlCreate">Crear lista</button></div>`,'#nl_n');
+  $('#nl_n').onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();ACT.nlCreate()}};
+}
+function setChip(el,sel){el.parentNode.querySelectorAll(sel).forEach(b=>{const on=b===el;b.classList.toggle('on',on);b.setAttribute(b.getAttribute('role')==='radio'?'aria-checked':'aria-pressed',on)})}
+
+/* Agregar varios de una vez */
+function bulkModal(){
+  const l=curList();
+  openModal(`<h2 id="mTitle">Agregar varios</h2><p class="hint" style="text-align:left">Uno por renglón.${l.type==='gastos'?' Poné el monto al final, por ejemplo: <b>Pan $1.500</b> o solo <b>$20.000</b>':l.type==='alumnos'?' Podés pegar la lista de nombres del curso.':''}</p><label class="sr" for="bk">Ítems</label><textarea id="bk" style="min-height:12rem"></textarea><div class="row end"><button class="btn ghost" data-act="close">Cancelar</button><button class="btn" data-act="bulkSave">Agregar</button></div>`,'#bk');
+}
+function bulkSave(){
+  const l=curList();if(!l)return;let n=0,sinMonto=0;
+  $('#bk').value.split(/\r?\n/).map(s=>s.trim()).filter(Boolean).forEach(line=>{
+    if(l.type==='gastos'){const sp=splitAmount(line);if(sp.amount==null&&/:\s*$/.test(line))return;if(sp.amount==null)sinMonto++;l.items.push(mkItem(l,sp.amount==null?line.replace(/^[\-•*]\s*/,''):sp.text,{amount:sp.amount}));n++}
+    else{const t=line.replace(/^(\d+[.)-]|[\-•*])\s*/,'').trim();if(t){l.items.push(mkItem(l,t));n++}}
+  });
+  if(!n){toast('No había nada para agregar');return}
+  save();closeModal();render();toast(`${n} agregado${n>1?'s':''} ✓`+(sinMonto?` · ${sinMonto} sin monto`:''),3500);
+}
+function listShareText(l){
+  if(l.type==='gastos'){const g=gastosTot(l);return l.items.map(i=>`${i.done?'✅':'⬜'} ${i.text||'Gasto'}${i.amount!=null?' — '+fmtMoney(i.amount):''}`).join('\n')+`\n\nTotal: ${fmtMoney(g.tot)}\nMarcado: ${fmtMoney(g.mk)}\nFalta: ${fmtMoney(g.falta)}`}
+  if(l.type==='alumnos'){const c=cursoStats(l);return l.items.map(i=>{const a=stuAvg(i);return `${i.text}: ${i.grades.map(g=>g==null?'—':fmtNum(g)).join(' | ')} → ${a==null?'sin notas':'Prom. '+fmtNum(a)}`}).join('\n')+(c.prom!=null?`\n\nPromedio del curso: ${fmtNum(c.prom)}\nAprueban: ${c.apr} de ${c.con}`:'')}
+  return l.items.map(i=>`${ST_EMO[liSt(i)]} ${i.text}${i.due?' (vence '+fmtShort(i.due)+')':''}`).join('\n');
+}
 
 /* --- RESUMEN Y AJUSTES --- */
 const LB_KEY=KEY+'_lastBackup';
@@ -900,14 +1091,34 @@ const ACT={
   noteShare:()=>{syncNE();shareText(NE.title||'Nota',NE.text||'')},
   openList:id=>{if(!$('#modal').classList.contains('hidden'))closeModal();if(ui.tab!=='listas'){ui.tab='listas'}openList(id)},
   listBack:()=>{popLayer('list');ui.openList=null;render()},
-  newList:()=>askText('Nombre de la lista','',v=>{const l={id:uid(),name:v,items:[]};S.lists.push(l);save();openList(l.id);setTimeout(()=>{const i=$('#li');i&&i.focus()},60)}),
+  newList:()=>newListModal(),
+  nlType:(id,d,el)=>{NL.type=d;setChip(el,'button');$('#nlCols').classList.toggle('hidden',d!=='alumnos');const n=$('#nl_n');if(n)n.placeholder={tareas:'Ej: Preparar la muestra',gastos:'Ej: Gastos semanales',alumnos:'Ej: 6to año – Lenguaje Plástico'}[d]},
+  nlCols:(id,d,el)=>{NL.cols=+d;setChip(el,'.chip2')},
+  nlCreate:()=>{const nm=$('#nl_n').value.trim()||LTYPES[NL.type][1];const l={id:uid(),name:nm,type:NL.type,cols:NL.cols,pass:6,items:[]};S.lists.push(l);save();closeModal();if(ui.tab!=='listas')ui.tab='listas';openList(l.id);setTimeout(()=>{const i=$('#li');i&&i.focus()},80)},
   renameList:()=>{const l=curList();askText('Cambiar nombre',l.name,v=>{l.name=v;save();render()})},
-  dupList:()=>{const l=curList();const c={id:uid(),name:l.name+' (copia)',items:l.items.map(i=>({id:uid(),text:i.text,done:false}))};S.lists.push(c);save();ui.openList=c.id;render();toast('Lista duplicada (todo sin tachar)')},
-  shareList:()=>{const l=curList();shareText(l.name,l.items.map(i=>(i.done?'✅ ':'⬜ ')+i.text).join('\n'))},
+  dupList:()=>{const l=curList();const c={...l,id:uid(),name:l.name+' (copia)',items:l.items.map(i=>({...i,id:uid(),done:false,st:'pend',grades:Array(l.cols).fill(null)}))};S.lists.push(c);save();ui.openList=c.id;render();toast(l.type==='alumnos'?'Lista duplicada: mismos alumnos, notas en blanco':'Lista duplicada (todo sin marcar)',3500)},
+  shareList:()=>{const l=curList();shareText(l.name,listShareText(l))},
   delList:()=>{const l=curList(),i=S.lists.indexOf(l);S.lists.splice(i,1);save();popLayer('list');ui.openList=null;render();offerUndo('Lista borrada',()=>S.lists.splice(Math.min(i,S.lists.length),0,l))},
   togItem:id=>{const it=curList().items.find(i=>i.id===id);if(!it)return;it.done=!it.done;buzz(10);save();render();const r=document.querySelector(`.item[data-id="${CSS.escape(id)}"]`);r&&r.focus({preventScroll:true})},
-  delItem:id=>{const l=curList(),i=l.items.findIndex(x=>x.id===id);if(i<0)return;const it=l.items.splice(i,1)[0];save();render();offerUndo('Ítem borrado',()=>{const L=S.lists.find(x=>x.id===l.id);L&&L.items.splice(Math.min(i,L.items.length),0,it)})},
-  clearDone:()=>{const l=curList(),old=[...l.items];l.items=l.items.filter(i=>!i.done);save();render();offerUndo('Tachados borrados',()=>{const L=S.lists.find(x=>x.id===l.id);if(L)L.items=old})},
+  cycleLI:(id,lid)=>{const l=S.lists.find(x=>x.id===lid),it=l&&l.items.find(i=>i.id===id);if(!it)return;it.st=ORDER[(ORDER.indexOf(it.st)+1)%4];it.done=it.st==='done';buzz(15);save();render();const b=document.querySelector(`[data-act="cycleLI"][data-id="${CSS.escape(id)}"]`);b&&b.focus({preventScroll:true})},
+  editItem:(id,lid)=>{if(!$('#modal').classList.contains('hidden'))closeModal();editItem(id,lid||ui.openList)},
+  ieSt:(id,k,el)=>{IE.st=k;DIRTY=true;setChip(el,'button')},
+  ieNoDue:()=>{const d=$('#i_due');if(d){d.value='';DIRTY=true}},
+  saveItem:()=>saveItem(),
+  delItem:()=>{const l=S.lists.find(x=>x.id===IE.lid);if(!l){closeModal();return}const i=l.items.findIndex(x=>x.id===IE.id);if(i<0){closeModal();return}const it=l.items.splice(i,1)[0];save();closeModal();render();offerUndo('Borrado',()=>{const L=S.lists.find(x=>x.id===l.id);L&&L.items.splice(Math.min(i,L.items.length),0,it)})},
+  clearDone:()=>{const l=curList(),old=[...l.items];l.items=l.items.filter(i=>l.type==='tareas'?i.st!=='done':!i.done);save();render();offerUndo(l.type==='tareas'?'Hechas borradas':'Marcados borrados',()=>{const L=S.lists.find(x=>x.id===l.id);if(L)L.items=old})},
+  bulkAdd:()=>bulkModal(),
+  listMore:()=>{const l=curList();openModal(`<h2 id="mTitle">${esc(l.name)}</h2><div class="morelist"><button class="btn ghost" data-act="renameList">✎ Cambiar nombre</button><button class="btn ghost" data-act="moreDo" data-d="dupList">⧉ Duplicar${l.type==='alumnos'?' (mismos alumnos, notas en blanco)':''}</button><button class="btn ghost" data-act="moreDo" data-d="shareList">📤 Compartir por WhatsApp u otra app</button><button class="btn danger" data-act="moreDo" data-d="delList">🗑 Borrar la lista</button></div><div class="row end"><button class="btn ghost" data-act="close">Cerrar</button></div>`)},
+  moreDo:(id,d)=>{closeModal();ACT[d]()},
+  bulkSave:()=>bulkSave(),
+  listOpts:()=>optsModal(),
+  optCols:(id,d,el)=>{OPT.cols=+d;setChip(el,'.chip2');DIRTY=true},
+  saveOpts:()=>{const l=curList(),pass=parseGrade($('#o_pass').value);if(pass==null){toast('La nota para aprobar va de 1 a 10');return}
+    const old={cols:l.cols,pass:l.pass,g:l.items.map(i=>[...i.grades])},lost=l.items.some(i=>i.grades.slice(OPT.cols).some(x=>x!=null));
+    l.cols=OPT.cols;l.pass=pass;l.items.forEach(i=>{i.grades=i.grades.slice(0,l.cols);while(i.grades.length<l.cols)i.grades.push(null)});
+    save();closeModal();render();
+    if(lost)offerUndo('Casilleros cambiados',()=>{const L=S.lists.find(x=>x.id===l.id);if(!L)return;L.cols=old.cols;L.pass=old.pass;L.items.forEach((it,k)=>{if(old.g[k])it.grades=old.g[k]})});else toast('Guardado ✓')},
+  sortList:()=>{const l=curList(),old=[...l.items];l.items.sort((a,b)=>a.text.localeCompare(b.text,'es',{sensitivity:'base'}));save();render();offerUndo('Ordenado de la A a la Z',()=>{const L=S.lists.find(x=>x.id===l.id);if(L)L.items=old})},
   undo:()=>{if(!UNDO)return;const f=UNDO;UNDO=null;f();save();render();toast('Recuperado ✓')},
   setSize:(id,d)=>{CFG.size=d;applyCfg();render()},
   setTheme:(id,d)=>{CFG.theme=d;applyCfg();render()},
@@ -929,25 +1140,39 @@ document.addEventListener('click',e=>{
 });
 document.addEventListener('keydown',e=>{
   if(e.key==='Escape'){if(!$('#sk').classList.contains('hidden'))skClose();else if(!$('#modal').classList.contains('hidden'))tryClose();return}
+  if(e.key==='Enter'&&e.target.dataset&&e.target.dataset.inp==='grade'){e.preventDefault();gradeInput(e.target,true);const all=[...document.querySelectorAll('input[data-inp=grade]')],nx=all[all.indexOf(e.target)+1];if(nx)nx.focus();else e.target.blur();return}
   if((e.key==='Enter'||e.key===' ')&&e.target.matches('[role=button]:not(button),[role=checkbox]:not(button)')){e.preventDefault();e.target.click()}
 });
 document.addEventListener('submit',e=>{
   e.preventDefault();const f=e.target;
   if(f.dataset.form==='quick'){const q=f.querySelector('input'),v=q.value.trim();if(!v){q.focus();return}const s=f.dataset.d;S.tasks.push({id:uid(),title:v,desc:'',date:s,time:'',repeat:'none',days:[],until:'',prio:false,remind:false,photo:null,status:{},notified:{}});save();render();toast('Tarea agregada ✓');const n=$('#qa');n&&n.focus()}
-  else if(f.dataset.form==='item'){const q=$('#li'),v=q.value.trim();if(!v){q.focus();return}curList().items.push({id:uid(),text:v,done:false});save();render();$('#li').focus()}
+  else if(f.dataset.form==='item'){
+    const l=curList();if(!l)return;const q=$('#li');let v=q.value.trim();
+    if(l.type==='gastos'){
+      const a=$('#la'),raw=a.value.trim();let amt=raw?parseMoney(raw):null;
+      if(raw&&amt==null){toast('Ese monto no se entiende. Ej: 20.000');a.focus();return}
+      if(amt==null&&v){const sp=splitAmount(v);if(sp.amount!=null){amt=sp.amount;v=sp.text}}
+      if(amt==null){if(v){a.focus();toast('Ahora poné el monto')}else q.focus();return}
+      l.items.push(mkItem(l,v,{amount:amt}));
+    }else{if(!v){q.focus();return}l.items.push(mkItem(l,v))}
+    save();render();$('#li').focus();
+  }
 });
 document.addEventListener('input',e=>{
   const k=e.target.dataset&&e.target.dataset.inp;
   if(k==='noteq'){ui.q=e.target.value;$('#ng').innerHTML=notesGrid();hydrate()}
   else if(k==='gq'){$('#sres').innerHTML=searchRes(e.target.value);hydrate()}
   else if(k==='sksize'){SK.size=+e.target.value}
+  else if(k==='grade'){gradeInput(e.target,false);return}
   if(k!=='gq'&&e.target.closest('#sheet'))DIRTY=true;
 });
 document.addEventListener('change',e=>{
+  if(e.target.dataset&&e.target.dataset.inp==='grade'){gradeInput(e.target,true);return}
   if(e.target.dataset&&e.target.dataset.chg==='rep'){const was=ED.repeat;syncED();if(was!=='none'&&ED.repeat==='none'&&ED.occ){ED.date=ED.occ;const f=$('#f_date');if(f)f.value=ED.occ}DIRTY=true;taskModal()}
   else if(e.target.closest&&e.target.closest('#sheet'))DIRTY=true;
 });
 /* Ocultar el menú inferior mientras se escribe, para que el teclado no tape nada */
+document.addEventListener('focusin',e=>{if(e.target.dataset&&e.target.dataset.inp==='grade')e.target.dataset.orig=e.target.value,setTimeout(()=>{try{e.target.select()}catch(_){}},0)});
 document.addEventListener('focusin',e=>{if(e.target.matches('input:not([type=checkbox]):not([type=range]),textarea'))document.body.classList.add('typing')});
 document.addEventListener('focusout',()=>setTimeout(()=>{const a=document.activeElement;if(!a||!a.matches('input:not([type=checkbox]):not([type=range]),textarea'))document.body.classList.remove('typing')},50));
 $('#sheet').addEventListener('focusin',e=>{if(e.target.matches('input,textarea,select'))setTimeout(()=>{try{e.target.scrollIntoView({block:'center',behavior:'smooth'})}catch(_){}},300)});
